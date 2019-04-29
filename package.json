@@ -1,0 +1,19 @@
+{
+  "name": "quickstart-angularjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -a localhost -p 8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "1.7.x",
+    "angular-input-masks": "^4.3.0",
+    "angular-material-data-table": "^0.10.10",
+    "angular-route": "1.7.x",
+    "angular-ui-mask": "^1.8.7"
+  }
+}

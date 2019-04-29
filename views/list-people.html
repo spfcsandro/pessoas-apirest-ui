@@ -1,0 +1,89 @@
+
+
+<!-- <table class="table" ng-show="!isLoading">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Celular</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Rua</th>
+            <th scope="col">Número</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="data in datas">
+            <td>{{ data.name }}</td>
+            <td>{{ data.cellphone }}</td>
+            <td>{{ data.phone }}</td>
+            <td>{{ data.street }}</td>
+            <td>{{ data.number }}</td>
+            <td>{{ data.city }}</td>
+            <td>{{ data.state }}</td>
+            <th scope="row">
+                <a id="edit-icon" ng-click="showAdvanced($event, data, 'PUT')"><i class="fa fa-edit"></i></a>
+
+                <a id="edit-icon"><i class="fa fa-trash"></i></a>
+            </th>
+        </tr>
+    </tbody>
+</table> -->
+<div class="center-container">
+    <div class="box-header">
+        <div>
+            <h1>Lista de pessoas</h1>
+            <p>{{ message }}</p>
+        </div>
+        <div>
+            <md-button class="md-raised md-primary" ng-click="showAdvanced($event, null, 'POST')">Cadastrar</md-button>
+        </div>
+    </div>
+</div>
+<div class="center-container">
+    <div id="content-loading" class="text-center" ng-show="isLoading">
+        <img id="img-loading" src="https://static.ubistart.com/assets/img/spinner.gif" alt="">
+    </div>
+    <div id="tablePeoples" ng-show="!isLoading">
+        <md-card>
+            <md-table-container>
+                <table md-table multiple md-progress="isLoading">
+                    <thead md-head md-order="query.order">
+                        <tr md-row>
+                            <!-- <th md-column md-order-by="nameToLower"><span>Dessert (100g serving)</span></th> -->
+                            <th md-column md-numeric><span>Nome</span></th>
+                            <th md-column md-numeric>Celular</th>
+                            <th md-column md-numeric>Telefone</th>
+                            <th md-column md-numeric>Rua</th>
+                            <th md-column md-numeric>Número</th>
+                            <th md-column md-numeric>Bairro</th>
+                            <th md-column md-numeric>Cidade</th>
+                            <th md-column md-numeric>Estado</th>
+                            <th md-column md-numeric>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row md-select="data" ng-repeat="data in datas">
+                        <td md-cell>{{ data.nome }}</td>
+                        <td md-cell>{{ data.celular }}</td>
+                        <td md-cell>{{ data.telefone }}</td>
+                        <td md-cell>{{ data.rua }}</td>
+                        <td md-cell>{{ data.numero }}</td>
+                        <td md-cell>{{ data.bairro }}</td>
+                        <td md-cell>{{ data.cidade }}</td>
+                        <td md-cell>{{ data.estado }}</td>
+                        <td md-cell>
+                            <a id="edit-icon" ng-click="showAdvanced($event, data, 'PUT')"><i class="fa fa-edit"></i></a>
+
+                            <a id="edit-icon" ng-click="deletePeople(data.id)"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+
+            <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{datas.count}}" md-on-paginate="getPeoples" md-page-select></md-table-pagination>
+        </md-card>
+    </div>
+</div>

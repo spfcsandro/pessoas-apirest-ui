@@ -1,0 +1,87 @@
+<md-dialog>
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Cadastrar Pessoa</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <!-- <md-icon md-font-icon="android"></md-icon> -->
+                    <md-icon md-svg-src="./styles/imgs/close.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+    
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div>
+                    <md-content>
+                        <md-input-container>
+                            <label>Nome</label>
+                            <input name="nome" ng-model="user.nome" type="text">
+                        </md-input-container>
+                    </md-content>
+                    <md-content>
+                        <md-input-container>
+                            <label>Celular</label>
+                            <input name="celular" ui-mask="(99) 99999-9999" ng-model="user.celular" type="text">
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Telefone1</label>
+                            <input name="telefone" ng-model="user.telefone" ui-mask-placeholder ui-mask="(99) 9999-9999" ui-mask-placeholder type="text">
+                        </md-input-container>
+                    </md-content>
+                    <md-content>
+                        <md-input-container>
+                            <label>Endereço</label>
+                            <input name="rua" ng-model="user.rua" type="text">
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Número</label>
+                            <input name="numero" ng-model="user.numero" type="text">
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Bairro</label>
+                            <input name="bairro" ng-model="user.bairro" type="text">
+                        </md-input-container>
+                    </md-content>
+                    <md-content>
+                        <md-input-container>
+                            <label>Estado</label>
+                            <md-select ng-model="user.estado">
+                                <md-option><em>Selecione</em></md-option>
+                                <md-option ng-click="getCityByState(state.id)" ng-repeat="state in states" ng-value="state.estado">
+                                    {{ state.estado }}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Cidade</label>
+                            <md-select ng-model="user.cidade" md-on-open="citys">
+                                <md-option><em>Selecione</em></md-option>
+                                <md-option ng-repeat="city in citys" ng-value="city.cidade" >
+                                    {{ city.cidade }}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </md-content>
+                    <md-content ng-show="method === 'POST'">
+                        <md-button ng-show="!isLoadingSave" class="btn-dialog md-raised md-primary" ng-click="create()">Cadastrar</md-button>
+                        <md-button ng-show="isLoadingSave" class="btn-dialog md-raised md-primary" ng-disabled="true">
+                            <div class="text-center">
+                                <img id="img-loading" src="../styles/imgs/spinner.gif" alt="">
+                            </div>
+                        </md-button>
+                    </md-content>
+                    <md-content ng-show="method === 'PUT'">
+                        <md-button ng-show="!isLoadingSave" class="btn-dialog md-raised md-primary" ng-click="save()">Atualizar</md-button>
+                        <md-button ng-show="isLoadingSave" class="btn-dialog md-raised md-primary" ng-disabled="true">
+                            <div class="text-center">
+                                <img id="img-loading" src="../styles/imgs/spinner.gif" alt="">
+                            </div>
+                        </md-button>
+                    </md-content>
+                </div>
+            </div>
+        </md-dialog-content>
+    </form>
+</md-dialog>
